@@ -1,0 +1,111 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: var(--gray14);
+    color: var(--gray1);
+}
+
+.light {
+    --gray1: rgb(25, 25, 25);
+    --gray2: rgb(45, 45, 45);
+    --gray3: rgb(55, 55, 55);
+    --gray4: rgb(65, 65, 65);
+    --gray5: rgb(75, 75, 75);
+    --gray6: rgb(85, 85, 85);
+    --gray7: rgb(105, 105, 105);
+    --gray8: rgb(115, 115, 115);
+    --gray9: rgb(125, 125, 125);
+    --gray10: rgb(135, 135, 135);
+    --gray11: rgb(145, 145, 145);
+    --gray12: rgb(165, 165, 165);
+    --gray13: rgb(185, 185, 185);
+    --gray14: rgb(255, 255, 255);
+    --orange: orange;
+}
+
+.dark {
+    --gray1: rgb(205, 205, 205);
+    --gray2: rgb(185, 185, 185);
+    --gray3: rgb(165, 165, 165);
+    --gray4: rgb(145, 145, 145);
+    --gray5: rgb(135, 135, 135);
+    --gray6: rgb(125, 125, 125);
+    --gray7: rgb(115, 115, 115);
+    --gray8: rgb(105, 105, 105);
+    --gray9: rgb(85, 85, 85);
+    --gray10: rgb(75, 75, 75);
+    --gray11: rgb(65, 65, 65);
+    --gray12: rgb(55, 55, 55);
+    --gray13: rgb(45, 45, 45);
+    --gray14: rgb(15, 15, 15);
+    --orange: var(--gray10);
+}
+
+.topbar {
+    background-color: black;
+    color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    width: 100%;
+    height: 3.1em;
+}
+
+.nottopbar {
+    position: relative;
+    top: 3.1em;
+}
+
+.center {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    text-align: center;
+}
+
+.topRow h4, .middleRow h4, .bottomRow h4 {
+    border: none;
+    position: relative;
+    margin: none;
+    padding: none;
+}
+
+.ticTacToeHidden {
+    color: var(--gray11);
+}
+
+.ticTacToeX {
+    color: red;
+}
+
+.ticTacToeO {
+    color: rgb(15, 180, 230)
+}
+
+.topRow button, .middleRow button, .bottomRow button{
+    outline: none;
+    border-radius: 2px;
+    border: 1px, solid, var(--gray11);
+    box-shadow: none;
+    text-shadow: none;
+    height: 50px;
+    width: 50px;
+    background-color: var(--gray11);
+    margin-top: 5px;
+}
+
+.topRow button:hover, .middleRow button:hover, .bottomRow button:hover{
+    border-radius: 2px;
+    border: 2px, solid, var(--gray12);
+    background-color: var(--gray12);
+    box-shadow: none;
+    text-shadow: none;
+}
+
+.topRow button:active, .middleRow button:active, .bottomRow button:active{
+    border-radius: 2px;
+    border: 2px, solid, var(--gray13);
+    background-color: var(--gray13);
+    box-shadow: none;
+    text-shadow: none;
+}

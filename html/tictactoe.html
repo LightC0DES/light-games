@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head id="head">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
+    <script>
+        const origin = window.location.origin
+        const mainSrc = origin + "/scripts/main.js"
+        const tictactoeSrc = origin + "/scripts/tictactoe.js"
+
+        let mainScript = document.createElement("script")
+        mainScript.type = "text/javascript"
+        mainScript.src = mainSrc
+        document.getElementById("head").appendChild(mainScript)
+        
+        let tictactoeScript = document.createElement("script")
+        tictactoeScript.type = "text/javascript"
+        tictactoeScript.src = tictactoeSrc
+        document.getElementById("head").appendChild(tictactoeScript)
+    </script>
+    <title>Document</title>
+</head>
+<body class="light">
+    <nav class="topbar">
+        
+    </nav>
+    <div class="nottopbar">
+        <div class="center">
+        </div>
+    </div>
+</div>
+</html>
