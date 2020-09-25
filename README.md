@@ -4,4 +4,5 @@
 
 #### Solved Issues:
 - Issue: The index.js file is too large!
+
   Solution: Moved the TicTacToeGame class to TicTacToe.js
