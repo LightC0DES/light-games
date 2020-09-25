@@ -2,19 +2,19 @@ const playHTML = `
 <h2 id="playingAs"></h2>
 <h2 id="turn">It's X's turn</h2>
 <div class="topRow">
-    <button id="0"><h3 class="ticTacToeHidden">.</h3></button>
-    <button id="1"><h3 class="ticTacToeHidden">.</h3></button>
-    <button id="2"><h3 class="ticTacToeHidden">.</h3></button>
+    <button id="0"><h2 class="ticTacToeHidden">.</h2></button>
+    <button id="1"><h2 class="ticTacToeHidden">.</h2></button>
+    <button id="2"><h2 class="ticTacToeHidden">.</h2></button>
 </div>
 <div class="middleRow">
-    <button id="3"><h3 class="ticTacToeHidden">.</h3></button>
-    <button id="4"><h3 class="ticTacToeHidden">.</h3></button>
-    <button id="5"><h3 class="ticTacToeHidden">.</h3></button>
+    <button id="3"><h2 class="ticTacToeHidden">.</h2></button>
+    <button id="4"><h2 class="ticTacToeHidden">.</h2></button>
+    <button id="5"><h2 class="ticTacToeHidden">.</h2></button>
 </div>
 <div class="bottomRow">
-    <button id="6"><h3 class="ticTacToeHidden">.</h3></button>
-    <button id="7"><h3 class="ticTacToeHidden">.</h3></button>
-    <button id="8"><h3 class="ticTacToeHidden">.</h3></button>
+    <button id="6"><h2 class="ticTacToeHidden">.</h2></button>
+    <button id="7"><h2 class="ticTacToeHidden">.</h2></button>
+    <button id="8"><h2 class="ticTacToeHidden">.</h2></button>
 </div>
 `
 
@@ -43,7 +43,7 @@ socket.on("move", function(data) {
     if (element != undefined) {
         element.innerText = "It's " + turn + "'s turn" 
     }
-    document.getElementById(data.id).innerHTML = "<h3 class='"+ textClass +"' >" + data.move + "</h3>"
+    document.getElementById(data.id).innerHTML = "<h2 class='"+ textClass +"' >" + data.move + "</h2>"
 })
 
 socket.on("updatePlayingAs", function(playingAsWho) {
@@ -54,15 +54,21 @@ socket.on("updatePlayingAs", function(playingAsWho) {
 })
 
 socket.on("stateChange", function(state) {
+    if (document.getElementById("centerText") != undefined) {
+        const element = document.getElementById("centerText")
+        element.parentNode.removeChild(element)
+    }
     switch (state) {
         case "win":
-            document.getElementsByClassName("center")[0].innerHTML = ""
-            document.getElementsByClassName("center")[0].innerHTML = centerTextHTML
+            document.getElementById("playingAs").parentNode.removeChild(document.getElementById("playingAs"))
+            document.getElementById("turn").parentNode.removeChild(document.getElementById("turn"))
+            document.getElementsByClassName("center")[0].innerHTML = centerTextHTML + document.getElementsByClassName("center")[0].innerHTML
             document.getElementById("centerText").innerText = "You won the game!"
             break
         case "lose":
-            document.getElementsByClassName("center")[0].innerHTML = ""
-            document.getElementsByClassName("center")[0].innerHTML = centerTextHTML
+            document.getElementById("playingAs").parentNode.removeChild(document.getElementById("playingAs"))
+            document.getElementById("turn").parentNode.removeChild(document.getElementById("turn"))
+            document.getElementsByClassName("center")[0].innerHTML = centerTextHTML + document.getElementsByClassName("center")[0].innerHTML
             document.getElementById("centerText").innerText = "You lost the game!"
             break
         case "play":
@@ -76,8 +82,7 @@ socket.on("stateChange", function(state) {
             });
             break
         case "tie":
-            document.getElementsByClassName("center")[0].innerHTML = ""
-            document.getElementsByClassName("center")[0].innerHTML = centerTextHTML
+            document.getElementsByClassName("center")[0].innerHTML += centerTextHTML
             document.getElementById("centerText").innerText = "It's a tie!"
             break
         case "waitingForPlayer":

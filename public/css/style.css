@@ -71,7 +71,7 @@ body {
 }
 
 .ticTacToeHidden {
-    color: var(--gray11);
+    color: var(--gray13);
 }
 
 .ticTacToeX {
@@ -90,7 +90,7 @@ body {
     text-shadow: none;
     height: 50px;
     width: 50px;
-    background-color: var(--gray11);
+    background-color: var(--gray13);
     margin-top: 5px;
 }
 
@@ -104,8 +104,8 @@ body {
 
 .topRow button:active, .middleRow button:active, .bottomRow button:active{
     border-radius: 2px;
-    border: 2px, solid, var(--gray13);
-    background-color: var(--gray13);
+    border: 2px, solid, var(--gray11);
+    background-color: var(--gray11);
     box-shadow: none;
     text-shadow: none;
 }
