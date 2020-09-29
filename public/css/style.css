@@ -63,9 +63,10 @@ body {
     text-align: center;
 }
 
-.topRow h4, .middleRow h4, .bottomRow h4 {
+.topRow h1, .middleRow h1, .bottomRow h1 {
     border: none;
     position: relative;
+    top: -5px;
     margin: none;
     padding: none;
 }
