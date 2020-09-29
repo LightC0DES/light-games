@@ -1,5 +1,11 @@
+let emptyRooms = []
+
+function GetEmptyRooms() {
+    return emptyRooms
+}
+
 class TicTacToeGame {
-    constructor (playerOne, emptyRooms) {
+    constructor (playerOne) {
         this.state = "waitingForPlayer"
         this.playerOne = playerOne
         this.playerTwo = undefined
@@ -11,7 +17,6 @@ class TicTacToeGame {
             "", "", ""
         ]
         emptyRooms.push(this)
-        this.emptyRooms = emptyRooms
         this.updateState()
     }
     handleWin() {
@@ -84,8 +89,8 @@ class TicTacToeGame {
             this.playerTwo = socket
         }
         if (this.NumPlayers == 2) {
-            if (this.emptyRooms.indexOf(this) != -1) {
-                this.emptyRooms.splice(this.emptyRooms.indexOf(this), 1)
+            if (emptyRooms.indexOf(this) != -1) {
+                emptyRooms.splice(emptyRooms.indexOf(this), 1)
             }
             if (this.state == "waitingForPlayer") {
                 this.state = "play"
@@ -95,8 +100,8 @@ class TicTacToeGame {
         }
         else {
             this.state = "waitingForPlayer"
-            if (this.emptyRooms.indexOf(this) == -1) {
-                this.emptyRooms.push(this)
+            if (emptyRooms.indexOf(this) == -1) {
+                emptyRooms.push(this)
             }
         }
     }
@@ -108,8 +113,8 @@ class TicTacToeGame {
             this.playerTwo = undefined
         }
         if (this.NumPlayers == 1) {
-            if (this.emptyRooms.indexOf(this) == -1) {
-                this.emptyRooms.push(this)
+            if (emptyRooms.indexOf(this) == -1) {
+                emptyRooms.push(this)
             }
             if (this.state == "play") {
                 if (this.playerOne != undefined) {
@@ -127,8 +132,8 @@ class TicTacToeGame {
             return 1
         }
         else {
-            if (this.emptyRooms.indexOf(this) != -1) {
-                this.emptyRooms.splice(this.emptyRooms.indexOf(this), 1)
+            if (emptyRooms.indexOf(this) != -1) {
+                emptyRooms.splice(emptyRooms.indexOf(this), 1)
             }
             return 0
         }
@@ -324,4 +329,4 @@ class TicTacToeGame {
     }
 }
 
-module.exports = TicTacToeGame
+module.exports = {"TicTacToeGame": TicTacToeGame, "GetEmptyRooms": GetEmptyRooms}
