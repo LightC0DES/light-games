@@ -1,20 +1,23 @@
 const { exception } = require('console');
-const TicTacToeGame = require("./TicTacToe")
+const ticTacToeModule = require("./TicTacToe")
+const TicTacToeGame = ticTacToeModule.TicTacToeGame
 const express = require('express')
 const {readFile, readFileSync, writeFile, writeFileSync} = require('fs');
 const socketio = require('socket.io')
-let emptyRooms = []
 
 const port = process.env.PORT || 3000
 
 const app = express();
 
-app.use(express.static('public'));
-
 function err500() {
     const html = readFileSync('./html/err500.html', 'utf8')
     return html
 }
+
+app.get("/tictactoeServiceWorker.js", (request, response) => {
+    console.log("sent file!")
+    response.sendFile(__dirname + '/public/scripts/tictactoeServiceWorker.js', {'headers': {'Service-Worker-Allow': '/tic-tac-toe', 'type': 'text/javascript'}})
+})
 
 app.get('/', (request, response) => {
     readFile('./html/index.html', 'utf8', (err, html) =>{
@@ -50,13 +53,17 @@ const serverSocket = socketio(server)
 serverSocket.on('connection', function(socket) {
     socket.on('ticTacToeConnection', function() {
         let room = undefined
+        const emptyRooms = ticTacToeModule.GetEmptyRooms()
         if (emptyRooms[0] != undefined) {
+            console.log("joining room!")
             room = emptyRooms[0]
             room.addPlayer(socket)
         }
         else {
-            room = new TicTacToeGame(socket, emptyRooms)
+            console.log("creating room!")
+            room = new TicTacToeGame(socket)
         }
+        delete emptyRooms
         socket.on("move", function(move) {
             room.playerMakeMove(socket, move)
         })
@@ -66,3 +73,5 @@ serverSocket.on('connection', function(socket) {
         })
     })
 })
+
+app.use(express.static('public'));
