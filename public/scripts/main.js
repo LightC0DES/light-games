@@ -21,6 +21,9 @@ function toDark() {
 }
 
 function onLoaded() {
+    if (navigator.standalone || window.matchMedia('(display-mode: standalone)').matches) {
+        document.getElementsByTagName("body")[0].removeChild(document.getElementsByClassName("topbar")[0])
+    }
     if (navigator.userAgent.indexOf("SamsungBrowser") !== -1) {
         toDark()
         return
