@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head id="head">
+    <title>Light Games - Tic-Tac-Toe</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js"></script>
     <script>
         const origin = window.location.origin
+        const faviconOrgin = origin + "/images/icon.png"
         const mainSrc = origin + "/scripts/main.js"
         const tictactoeSrc = origin + "/scripts/tictactoe.js"
+        const manifestOrgin = origin + "/manifests/TicTacToeManifest.json" 
 
         let mainScript = document.createElement("script")
         mainScript.type = "text/javascript"
@@ -19,6 +22,17 @@
         tictactoeScript.type = "text/javascript"
         tictactoeScript.src = tictactoeSrc
         document.getElementById("head").appendChild(tictactoeScript)
+        
+        let faviconLink = document.createElement("link")
+        faviconLink.rel = "icon"
+        faviconLink.type = "image/png"
+        faviconLink.href = faviconOrgin
+        document.getElementById("head").appendChild(faviconLink)
+
+        let manifest = document.createElement("link")
+        manifest.rel = "manifest"
+        manifest.href = manifestOrgin
+        document.getElementById("head").appendChild(manifest)
     </script>
     <title>Document</title>
 </head>
@@ -28,6 +42,7 @@
     </nav>
     <div class="nottopbar">
         <div class="center">
+            <h1 id="centerText">You need to be connected to the internet to play!</h1>
         </div>
     </div>
 </div>
