@@ -1,4 +1,4 @@
-self.addEventListener("install", event => {
+self.addEventListener("activate", event => {
     event.waitUntil(
         caches.open("static").then(cache => {
             return cache.addAll(["../tic-tac-toe", "../css/style.css", "../images/icon.png", "../scripts/main.js"])
@@ -12,7 +12,7 @@ self.addEventListener("install", event => {
 self.addEventListener("fetch", event => {
     event.respondWith(
         caches.match(event.request).then(response => {
-            return fetch(event.request).catch((err) => {console.log("Error fetching the data!")}) || response
+            return response || fetch(event.request).catch((err) => {console.log("Error fetching the data!")})
         })
     )
 })
