@@ -3,11 +3,18 @@
     "short_name": "Tic-Tac-Toe",
     "start_url": "../tic-tac-toe",
     "theme_color": "#050505",
+    "background_color": "#0F0F0F",
     "display": "standalone",
     "icons": [
         {
             "src": "../images/icon.png",
             "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "any"
+        },
+        {
+            "src": "../images/icon2.png",
+            "sizes": "514x514",
             "type": "image/png",
             "purpose": "any"
         }
